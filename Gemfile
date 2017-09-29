@@ -25,6 +25,7 @@ gem "suspenders"
 gem "title"
 gem "uglifier"
 gem 'bootstrap', '~> 4.0.0.beta'
+gem 'devise'
 
 
 group :development do
