@@ -24,6 +24,7 @@ gem "sprockets", ">= 3.0.0"
 gem "suspenders"
 gem "title"
 gem "uglifier"
+gem 'bootstrap', '~> 4.0.0.beta'
 
 
 group :development do
