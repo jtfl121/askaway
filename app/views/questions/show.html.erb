@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-header">
     <%= @question.question%>
+    <%= link_to "Edit question", edit_question_path(@question), class: "btn btn-primary float-right" %>
   </div>
 </div>
 
