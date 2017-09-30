@@ -41,6 +41,16 @@ class QuestionsController < ApplicationController
 
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+
+    if @question.destroy
+      flash[:success] = "Question was deleted"
+      redirect_to root_path
+    end
+    
+  end
+
   protected
     def resource_not_found
     message = "The question you are looking for could not be found" 
