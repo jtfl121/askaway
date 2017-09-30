@@ -23,13 +23,30 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+
+    if @question = Question.update(question_params)
+      flash[:success] = "Question was updated"
+      redirect_to @question
+
+    else
+      flash.now[:error] = "Question was not updated"
+      render :edit
+    end
+
+  end
+
   protected
     def resource_not_found
     message = "The question you are looking for could not be found" 
     flash[:alert] = message
     redirect_to root_path
     end
-
 
   private
 
