@@ -11,9 +11,13 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.save
-    flash[:success] = "New question asked"
-    redirect_to root_path
+    if @question.save
+      flash[:success] = "New question asked"
+      redirect_to root_path
+    else
+      flash[:error] = "Question not asked"
+      render :new
+    end
   end
 
   private
