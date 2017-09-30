@@ -25,19 +25,27 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    unless @question.user == current_user
+      flash[:alert] = "You can only edit your own question."
+      redirect_to root_path 
+    end
   end
 
   def update
-
-    if @question = Question.update(question_params)
-      flash[:success] = "Question was updated"
-      redirect_to @question
-
+    unless @question.user == current_user
+      flash[:danger] = "You can only edit your own question."
+      redirect_to root_path 
     else
-      flash.now[:error] = "Question was not updated"
-      render :edit
-    end
 
+      if @question = Question.update(question_params)
+        flash[:success] = "Question was updated"
+        redirect_to @question
+
+      else
+        flash.now[:error] = "Question was not updated"
+        render :edit
+      end
+    end
   end
 
   def destroy
