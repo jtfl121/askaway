@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-
+  before_action :set_question, only: [:show, :edit, :update, :destroy ]
   def index
     @questions = Question.all
   end
@@ -20,15 +20,12 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
   end
 
   def edit
-    @question = Question.find(params[:id])
   end
 
   def update
-    @question = Question.find(params[:id])
 
     if @question = Question.update(question_params)
       flash[:success] = "Question was updated"
@@ -42,7 +39,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
 
     if @question.destroy
       flash[:success] = "Question was deleted"
@@ -64,4 +60,8 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:question)
   end
 
+  def set_question
+    @question = Question.find(params[:id])
+
+  end
 end
