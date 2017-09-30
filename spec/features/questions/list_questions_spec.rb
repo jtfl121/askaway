@@ -19,7 +19,7 @@ RSpec.feature 'List questions' do
 
  end
 
- scenario "A user should not see questions" do
+  scenario "A user should not see questions" do
     Question.delete_all
 
     visit root_path
@@ -28,12 +28,10 @@ RSpec.feature 'List questions' do
     expect(page).not_to have_content(@question2.question)
     expect(page).not_to have_link(@question1.question)
     expect(page).not_to have_link(@question2.question)
-
     expect(page).to have_content("No Questions... please add")
+  end
 
- end
-
-   scenario "Questions but not logged in" do
+  scenario "Questions but not logged in" do
 
     visit root_path
 
@@ -42,15 +40,11 @@ RSpec.feature 'List questions' do
     expect(page).to have_link(@question1.question)
     expect(page).to have_link(@question2.question)
     expect(page).not_to have_link("New Question")
-
-
  end
 
-
-scenario "Questions but not logged in" do
+  scenario "Questions but not logged in" do
     
     login_as(@user)
-
     visit root_path
 
     expect(page).to have_content(@question1.question)
@@ -58,8 +52,6 @@ scenario "Questions but not logged in" do
     expect(page).to have_link(@question1.question)
     expect(page).to have_link(@question2.question)
     expect(page).to have_link("New Question")
-
-
- end
+  end
 
 end
