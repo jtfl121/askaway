@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "New question asked"
       redirect_to root_path
     else
-      flash[:error] = "Question not asked"
+      flash.now[:error] = "Question not asked"
       render :new
     end
   end
