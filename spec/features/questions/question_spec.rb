@@ -1,6 +1,9 @@
-require 'rails_helper'
-
 RSpec.feature 'Questions' do 
+
+  before do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+  end
 
   scenario 'A user can create a question' do
     visit root_path
@@ -13,8 +16,12 @@ RSpec.feature 'Questions' do
 
     click_button "Ask question"
 
+
+    expect(Question.last.user).to eq(@user)
     expect(page).to have_content("New question asked")
     expect(page.current_path).to eq(root_path)
+    expect(page).to have_content("Asked by: #{@user.email}")
+
   end
 
   scenario "A user fails to create a new article" do 

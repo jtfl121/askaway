@@ -14,6 +14,11 @@
       <div class="card-header">
         <%= link_to question.question, question %>
       </div>
+      <div class="card-header">
+        
+        Asked by: <%= question.user.email %>
+
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -1,8 +1,9 @@
-require 'rails_helper'
-
 RSpec.feature 'Delete question' do
 
   before do
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+    
     @question = FactoryGirl.create(:question)
   end
 

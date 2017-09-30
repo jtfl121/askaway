@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.feature 'List questions' do 
 
   before do
