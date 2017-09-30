@@ -1,9 +1,11 @@
 <div class="card">
   <div class="card-header">
     <%= @question.question%>
-    <%= link_to "Edit question", edit_question_path(@question), class: "btn btn-primary float-right" %>    
-    <%= link_to "Delete question", question_path(@question),
-      method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-primary float-right" %>
+    <% if user_signed_in? && @question.user == current_user %>
+      <%= link_to "Edit question", edit_question_path(@question), class: "btn btn-primary float-right" %>    
+      <%= link_to "Delete question", question_path(@question),
+        method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-primary float-right" %>
+      <% end %>
   </div>
 </div>
 
