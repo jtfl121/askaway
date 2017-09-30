@@ -1,6 +1,10 @@
 RSpec.describe "Questions", type: :request do
   before do
-    @question = FactoryGirl.create(:question)
+
+    @user = FactoryGirl.create(:user)
+    login_as(@user)
+
+    @question = FactoryGirl.create(:question, user: @user )
   end
 
   describe 'GET /questions/:id' do 
