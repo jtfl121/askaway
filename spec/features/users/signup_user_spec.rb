@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.feature 'Signup user' do 
 
   before do

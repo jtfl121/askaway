@@ -1,11 +1,10 @@
-require 'rails_helper'
-
 RSpec.feature 'List questions' do 
 
   before do
+    @user = FactoryGirl.create(:user)
 
-    @question1 = FactoryGirl.create(:question)
-    @question2 = FactoryGirl.create(:question)
+    @question1 = FactoryGirl.create(:question, user: @user)
+    @question2 = FactoryGirl.create(:question, user: @user)
 
   end
 
