@@ -12,7 +12,13 @@
       
     </ul>
    
-   <%= link_to 'New Question', new_question_path, class: "btn btn-primary" %>
+
+  <% if user_signed_in? %>
+  <%= current_user.email %>   
+    <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary") %>        
+  <% else %>
+    <%= link_to('Sign In', new_user_session_path, class: "btn btn-primary")  %>  
+  <% end %>
     
   </div>
 </nav>
