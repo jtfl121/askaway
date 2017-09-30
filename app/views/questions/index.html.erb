@@ -1,0 +1,7 @@
+<% @questions.each do |question| %>
+  <div class="card">
+    <div class="card-header">
+      <%= link_to question.question, question %>
+    </div>
+  </div>
+<% end %>
