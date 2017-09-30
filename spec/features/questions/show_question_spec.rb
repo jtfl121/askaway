@@ -3,7 +3,8 @@ RSpec.feature 'Question' do
   before do
     @user = FactoryGirl.create(:user)
     login_as(@user)
-    @question = FactoryGirl.create(:question)
+
+    @question = FactoryGirl.create(:question, user: @user )
 
   end
 
