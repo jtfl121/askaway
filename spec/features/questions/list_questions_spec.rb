@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.feature 'List questions' do 
 
   before do
-    @question1 = Question.create(question: "Change the style of the block depending on the data in the data?")
-    @question2 = Question.create(question: "What is wrong with my link_to tag? NameError. undefined local variable or method")
+    @question1 = FactoryGirl.create(:question)
+    @question2 = FactoryGirl.create(:question)
 
   end
 
