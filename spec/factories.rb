@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :question do
-    question "MyText"
+    question {Faker::Lorem.sentence}
   end
   factory :user do
     
