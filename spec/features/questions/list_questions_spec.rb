@@ -46,4 +46,20 @@ RSpec.feature 'List questions' do
 
  end
 
+
+scenario "Questions but not logged in" do
+    
+    login_as(@user)
+
+    visit root_path
+
+    expect(page).to have_content(@question1.question)
+    expect(page).to have_content(@question2.question)
+    expect(page).to have_link(@question1.question)
+    expect(page).to have_link(@question2.question)
+    expect(page).to have_link("New Question")
+
+
+ end
+
 end
