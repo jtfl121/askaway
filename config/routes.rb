@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :questions
 
   root to: 'questions#index'
+
+  match '*path', :to => 'application#routing_error', :via => [:get]
+
 end
