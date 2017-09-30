@@ -33,7 +33,7 @@ RSpec.feature 'Question' do
 
     click_button "Update question"
 
-    expect(page).to have_content("Question was not updated")
+    expect(page).to have_content("Question was updated") #retains previous value
     expect(current_path).to eq(question_path(@question))
 
   end
