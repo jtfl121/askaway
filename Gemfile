@@ -26,6 +26,7 @@ gem "title"
 gem "uglifier"
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'devise'
+gem 'acts-as-taggable-on'
 
 
 group :development do

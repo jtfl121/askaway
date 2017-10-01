@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'questions#index'
+  get 'tags/:tag', to: 'questions#index', as: :tag
 
   match '*path', :to => 'application#routing_error', :via => [:get]
 
