@@ -5,9 +5,13 @@ class QuestionsController < ApplicationController
   def index
     if params[:tag]
       @questions = Question.tagged_with(params[:tag])
+    elsif params[:q]
+      @questions = Question.search_for(params[:q])
     else
       @questions = Question.all
     end
+
+
   end
 
   def new
