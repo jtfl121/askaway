@@ -1,4 +1,11 @@
 <%= simple_form_for(@question) do |f| %>
   <%= f.input :question %>
-  <%= f.button :submit, btn_text, class: "float-right" %>
+  
+
+  <div class='field'>
+    <%= f.label :tag_list, 'Tags (separated by commas)' %><br/>
+    <%= f.text_field :tag_list %>
+</div>
+
+<%= f.button :submit, btn_text, class: "float-right" %>
 <% end %>

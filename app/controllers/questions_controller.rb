@@ -1,8 +1,13 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_question, only: [:show, :edit, :update, :destroy ]
+  
   def index
-    @questions = Question.all
+    if params[:tag]
+      @questions = Question.tagged_with(params[:tag])
+    else
+      @questions = Question.all
+    end
   end
 
   def new
@@ -74,7 +79,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:question)
+    params.require(:question).permit(:question, :tag_list)
   end
 
   def set_question
