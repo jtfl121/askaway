@@ -52,17 +52,33 @@ RSpec.describe "Questions", type: :request do
         expect(flash[:alert]).to eq flash_message
       end 
     end
+  end
 
-    context 'with logged in and owner' do 
-      before do
-        login_as(@user)
-        get "/questions/#{@question.id}/edit" 
-      end
+  # describe 'DELETE /questions/:id' do
+  #   context 'logged in and owner' do 
+  #     before do
+  #       login_as(@user)
+  #       delete "/questions/#{@question.id}" 
+  #     end
       
-      it "successfully edits question" do 
-        expect(response.status).to eq 200
-      end 
-    end
+  #     it "should return with 200" do 
+  #       expect(response.status).to eq 200
+  #       flash_message = "Question was deleted." 
+  #       expect(flash[:alert]).to eq flash_message
+  #     end 
+  #   end
 
+    # context 'logged in and non-owner' do 
+    #   before do
+    #     login_as(@user2)
+    #     delete "/questions/#{@question.id}" 
+    #   end
+      
+    #   it "Question was deleted" do 
+    #     expect(response.status).to eq 302
+    #     flash_message = "You can only delete your own question." 
+    #     expect(flash[:alert]).to eq flash_message
+    #   end 
+    # end
   end
 end
