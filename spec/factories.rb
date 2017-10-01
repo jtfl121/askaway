@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :answer do
+    answer "MyText"
+    question nil
+  end
   factory :question do
     question {Faker::Lorem.sentence}
   end
