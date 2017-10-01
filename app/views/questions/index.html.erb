@@ -1,7 +1,8 @@
-<div><%= link_to 'New Question', new_question_path, class: "btn btn-primary float-right" %>
-</div>
+<% if user_signed_in? %>
+  <div><%= link_to 'New Question', new_question_path, class: "btn btn-primary float-right" %>
+  </div>
 <br>
-
+<% end %>
 <%if @questions.empty? %>
   <div class="card">
     <div class="card-header">
