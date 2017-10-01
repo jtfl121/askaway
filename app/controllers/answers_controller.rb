@@ -13,12 +13,7 @@ class AnswersController < ApplicationController
     end
     redirect_to question_path(@question)
   end
-def destroy
-  if @answer.destroy
-          flash[:success] = "Your question was deleted"
-redirect_to question_path(@question)
-  end
-end
+
   private
 
   def answers_params

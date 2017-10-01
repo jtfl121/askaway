@@ -50,6 +50,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    unless @question.user == current_user
+      flash[:danger] = "You can only delete your own question."
+      redirect_to root_path 
+    else
+
+      if @question.destroy
+        flash[:success] = "Question was deleted"
+        redirect_to root_path
+      end
+    end 
+  end
+
+
   protected
     def resource_not_found
     message = "The question you are looking for could not be found" 
