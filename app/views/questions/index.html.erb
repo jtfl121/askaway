@@ -1,38 +1,37 @@
 <% if user_signed_in? %>
-  <div><%= link_to 'New Question', new_question_path, class: "btn btn-primary float-right" %>
-  </div>
+<div><%= link_to 'New Question', new_question_path, class: "btn btn-primary float-right" %>
+</div>
 <br>
-
-
-<%= form_tag questions_path, method: :get, class: 'form-search' do |f| %>
-  <%= label_tag :q, 'Search' %>
-  <%= search_field :q, @query, placeholder: 'Search...' %>
- <%= button_tag type: 'submit', name: nil do %>
- <i class="fa fa-search" aria-hidden="true"></i>
-  <% end %>
-  <% end %>
-
-
 <% end %>
-<%if @questions.empty? %>
-  <div class="card">
-    <div class="card-header">
-    <p>No Questions... please add</p>
-    </div>
-  </div>
-<%else%>
-  <% @questions.each do |question| %>
+<div class="">
+  <%= form_tag questions_path, method: :get, class: 'form-search' do |f| %>
+    <%= label_tag :q, 'Search' %>
+    <%= search_field :q, @query, placeholder: 'Search...', id:"search_bar" %>
+    <%= button_tag 'Search',class: "float-right" %>
+  <% end %>
+</div>
+<br>
+<br>
+<div class="">
+  <%if @questions.empty? %>
     <div class="card">
       <div class="card-header">
-        <%= link_to question.question, question %>
-      </div>
-      <div class="card-header">
-        
-        Asked by: <%= question.user.email %>
-
-        <p>Tags: <%= raw(question.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
- 
+        <p>No Questions... please add</p>
       </div>
     </div>
+  <%else%>
+    <% @questions.each do |question| %>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to question.question, question %>
+        </div>
+        <div class="card-header">
+          
+          Asked by: <%= question.user.email %>
+          <p>Tags: <%= raw(question.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-primary btn-sm" }.join(' ')) %></p>
+          
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
