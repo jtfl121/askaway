@@ -7,5 +7,24 @@
         method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-primary float-right" %>
       <% end %>
   </div>
-</div>
 
+  <% if @answers.any? %>
+    <% @answers.each do |answer|%>
+      <div clss="card-body">
+        <%= answer.answer %>
+        Answered by: <%= answer.user.email %>
+        </div>
+    <% end %>
+    <% else %>
+    no answers
+    <% end %>
+  </div>
+
+<div class= "card">
+  <div clss="card-body">
+    <%= simple_form_for [@question, @answer] do |f| %>
+      <%= f.input :answer %>
+      <%= f.button :submit, "Post your answer", class: "float-right" %>
+    <% end %>  
+  </div>
+</div>

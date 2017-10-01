@@ -22,6 +22,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = @question.answers.build
+    @answers = Answer.where(question_id: params[:id])
   end
 
   def edit
@@ -58,9 +60,9 @@ class QuestionsController < ApplicationController
         flash[:success] = "Question was deleted"
         redirect_to root_path
       end
-    end
-    
+    end 
   end
+
 
   protected
     def resource_not_found
