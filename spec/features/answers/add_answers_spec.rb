@@ -4,6 +4,7 @@ RSpec.feature 'Add answers to questions' do
     @user = FactoryGirl.create(:user)
     @user2 = FactoryGirl.create(:user)
     @question = FactoryGirl.create(:question, user: @user)
+    @answer = FactoryGirl.create(:answer, question: @question, user: @user2)
 
   end
 
@@ -14,14 +15,14 @@ RSpec.feature 'Add answers to questions' do
 
     click_link @question.question
 
-    fill_in :answer, with: "This is my answer"
+    fill_in "Answer", with: "This is my answer"
 
-    click_link "Post your Answer"
+    click_button "Post your answer"
     
     expect(page).to have_content("Your question was added")
     expect(page).to have_content("This is my answer")
-    expect(page).to have_content("Answered by: #{@user2}")
-    expect(current_path).to eq(quesiton_path(@question.id))
+    expect(page).to have_content("Answered by: #{@user2.email}")
+    expect(current_path).to eq(question_path(@question.id))
 
   end
 

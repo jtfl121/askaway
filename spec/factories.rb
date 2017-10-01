@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :answer do
-    answer "MyText"
-    question nil
+    answer {Faker::Lorem.sentence}
   end
   factory :question do
     question {Faker::Lorem.sentence}
