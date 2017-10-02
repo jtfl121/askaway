@@ -1,0 +1,22 @@
+<div class="">
+  <%if @questions.empty? %>
+    <div class="card">
+      <div class="card-header">
+        <p>No Questions... please add</p>
+      </div>
+    </div>
+  <%else%>
+    <% @questions.each do |question| %>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to question.question, question %>
+        </div>
+        <div class="card-body">
+          Asked by: <%= question.user.email %>
+          <p>Tags: <%= raw(question.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-primary btn-sm" }.join(' ')) %></p>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+</div>

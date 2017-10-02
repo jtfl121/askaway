@@ -6,27 +6,27 @@
       <%= link_to "Delete question", question_path(@question),
         method: :delete, data: {confirm: "Are you sure you want to delete?"}, class: "btn btn-primary float-right" %>
       <% end %>
-      <p>Tags: <%= raw(@question.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>  
+      <p>Tags: <%= raw(@question.tag_list.map { |t| link_to t, tag_path(t), class: "btn btn-primary btn-sm" }.join(' ')) %></p>  
 
   </div>
 
   <% if @answers.any? %>
     <% @answers.each do |answer|%>
-      <div clss="card-body">
+      <div class="card-body">
         <%= answer.answer %>
+        <br>
         Answered by: <%= answer.user.email %>
-        </div>
+        <hr>
+      </div>
     <% end %>
-    <% else %>
+  <% else %>
     no answers
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
-<div class= "card">
-  <div clss="card-body">
-    <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :answer %>
-      <%= f.button :submit, "Post your answer", class: "float-right" %>
-    <% end %>  
-  </div>
+<div class= "my-answer">
+  <%= simple_form_for [@question, @answer], class: "form-group" do |f| %>
+    <%= f.input :answer, class: "form-control" %>
+    <%= f.button :submit, "Post your answer", class: "float-right" %>
+  <% end %>  
 </div>
