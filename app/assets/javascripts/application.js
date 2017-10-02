@@ -14,4 +14,5 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require selectize
 //= require ask_away
