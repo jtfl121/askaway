@@ -1,0 +1,8 @@
+<div class="my-search-bar">
+  <%= form_tag questions_path, method: :get, class: 'form-search' do |f| %>
+    <%= search_field :q, @query, placeholder: 'Search...', id:"search_bar" %>
+    <%= button_tag 'Search',class: "float-right" %>
+  <% end %>
+</div>
+
+
