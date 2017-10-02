@@ -48,7 +48,7 @@ class QuestionsController < ApplicationController
       redirect_to root_path 
     else
 
-      if @question = Question.update(question_params)
+       if @question.update_attributes(question_params)
         flash[:success] = "Question was updated"
         redirect_to @question
 
