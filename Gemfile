@@ -28,6 +28,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'devise' 
 gem 'acts-as-taggable-on'
 gem 'pg_search'
+gem 'selectize-rails'
 
 
 group :development do

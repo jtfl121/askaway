@@ -4,3 +4,16 @@ window.setTimeout(function() {
       $(this).remove();
     });
 }, 1000);
+
+
+$('.tags').selectize({
+    plugins: ['remove_button'],
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+});
